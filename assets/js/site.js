@@ -752,7 +752,7 @@
           </a>
           <nav class="desktop-nav mx-auto hidden items-center gap-3 xl:flex" aria-label="Primary navigation">${desktopLinks}</nav>
           <div class="desktop-actions hidden shrink-0 items-center gap-2 xl:flex">
-            <a class="btn-primary px-5 text-xs" href="signup.html"><i data-lucide="user-plus"></i>Sign Up</a>
+            <a class="btn-primary px-4 py-0 text-xs !min-h-[44px] !min-w-fit" href="signup.html"><i data-lucide="user-plus"></i>Sign Up</a>
             <button class="icon-btn" type="button" aria-label="Toggle dark mode" data-theme-toggle></button>
             <button class="icon-btn" type="button" aria-label="Toggle right to left layout" data-rtl-toggle></button>
           </div>
@@ -1158,15 +1158,15 @@
     const isLogin = section.type === "login";
     const content = `
       <div class="max-w-md mx-auto w-full">
-        <form class="paper-card reveal grid gap-5 p-8" data-auth-form>
-          <a href="index.html" class="flex flex-col items-center gap-2 mb-8 text-center transition-opacity hover:opacity-80" aria-label="Back to home">
+        <form class="paper-card reveal grid gap-4 p-6" data-auth-form>
+          <a href="index.html" class="flex flex-col items-center gap-2 mb-6 text-center transition-opacity hover:opacity-80" aria-label="Back to home">
             <span class="brand-mark mb-1"><i data-lucide="scissors"></i></span>
             <span class="font-display text-2xl font-bold">Paperie & Petal</span>
           </a>
-          <div class="text-center mb-6">
+          <div class="text-center mb-5">
             <span class="eyebrow mx-auto">${section.eyebrow}</span>
             <h2 class="font-display text-3xl font-bold mt-4 leading-tight">${section.title}</h2>
-            <p class="section-copy mt-3 text-sm">${section.copy}</p>
+            <p class="section-copy mt-2 text-sm">${section.copy}</p>
           </div>
           ${!isLogin ? `
             <div class="grid gap-2 text-sm font-bold text-left">
@@ -1181,11 +1181,21 @@
           <div class="grid gap-2 text-sm font-bold text-left">
             Password
             <input class="contact-input" type="password" name="password" placeholder="••••••••" required />
+            ${isLogin ? `
+              <div class="flex justify-end -mt-1">
+                <a href="#" class="text-[10px] font-bold text-[color:var(--brand-rose)] hover:underline transition-colors hover:text-[color:var(--brand-sage)]">Forgot password?</a>
+              </div>
+            ` : ""}
           </div>
           ${!isLogin ? `
             <div class="grid gap-2 text-sm font-bold text-left">
               Confirm Password
               <input class="contact-input" type="password" name="confirm-password" placeholder="••••••••" required />
+            </div>
+          ` : ""}
+          ${!isLogin ? `
+            <div class="text-[10px] text-[color:var(--muted)] text-center px-4 mt-1">
+              By creating an account, you agree to our <a href="#" class="font-bold text-[color:var(--brand-rose)] hover:underline transition-colors hover:text-[color:var(--brand-sage)]">Terms and Conditions</a>.
             </div>
           ` : ""}
           <button class="btn-primary w-full px-6 py-4 text-sm mt-2" type="submit">
@@ -1198,7 +1208,7 @@
             <span class="relative bg-[color:var(--paper)] px-3 text-[10px] font-bold text-[color:var(--muted)] uppercase tracking-widest">Or continue with</span>
           </div>
 
-          <div class="grid gap-3 sm:grid-cols-2">
+          <div class="grid grid-cols-2 gap-3">
             <button class="btn-ghost w-full px-4 text-sm" type="button">
               <svg class="size-4 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
