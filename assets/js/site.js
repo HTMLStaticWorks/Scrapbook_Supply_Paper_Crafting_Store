@@ -828,8 +828,8 @@
             <h1 class="hero-title mt-6">${highlightLastWord(hero.title)}</h1>
             <p class="hero-copy mt-7">${hero.copy}</p>
             <div class="hero-actions mt-9 flex flex-col sm:flex-row flex-wrap justify-center items-stretch gap-4">
-              <a class="btn-primary px-8 py-5 text-base w-full sm:w-64" href="${hero.ctas[0][1]}"><i data-lucide="sparkles"></i>${hero.ctas[0][0]}</a>
-              <a class="btn-secondary px-8 py-5 text-base w-full sm:w-64" href="${hero.ctas[1][1]}"><i data-lucide="calendar-check"></i>${hero.ctas[1][0]}</a>
+              <a class="btn-primary px-8 py-5 text-base w-full sm:w-64 min-h-[80px] flex items-center justify-center text-center" href="${hero.ctas[0][1]}"><i data-lucide="sparkles"></i>${hero.ctas[0][0]}</a>
+              <a class="btn-secondary px-8 py-5 text-base w-full sm:w-64 min-h-[80px] flex items-center justify-center text-center" href="${hero.ctas[1][1]}"><i data-lucide="calendar-check"></i>${hero.ctas[1][0]}</a>
             </div>
           </div>
         </div>
@@ -1000,7 +1000,9 @@
                   <h3 class="mt-4 font-display text-2xl font-bold">${event.title}</h3>
                   <p class="section-copy mt-2">${event.text}</p>
                 </div>
-                <a class="btn-secondary shrink-0 px-8 text-sm" href="contact.html"><i data-lucide="ticket"></i>Register</a>
+                <div class="mt-4 flex justify-center">
+                  <a class="btn-secondary w-full sm:w-64 px-8 text-sm" href="contact.html"><i data-lucide="ticket"></i>Register</a>
+                </div>
               </div>
             </article>
           `).join("")}
@@ -1045,7 +1047,7 @@
                 ${planItem.features.map((feature) => `<li class="flex items-center justify-center gap-2"><i class="size-4 shrink-0 text-[color:var(--brand-sage)]" data-lucide="check"></i><span>${feature}</span></li>`).join("")}
               </ul>
               <div class="mt-8 flex justify-center">
-                <a class="btn-primary w-full sm:w-64 px-5 text-sm" href="contact.html">Choose Plan</a>
+                <a class="btn-primary w-full sm:w-64 px-5 text-sm flex items-center justify-center" href="contact.html"><i data-lucide="check-circle"></i>Choose Plan</a>
               </div>
             </article>
           `).join("")}
@@ -1142,7 +1144,9 @@
           </div>
           <label class="grid gap-2 text-sm font-bold text-center">Topic<select class="contact-input" name="topic"><option>Workshop registration</option><option>Custom kit request</option><option>Product question</option><option>Private event</option></select></label>
           <label class="grid gap-2 text-sm font-bold text-center">Message<textarea class="contact-input min-h-36" name="message" placeholder="Tell us about the project, workshop, or supplies you are interested in." required></textarea></label>
-          <button class="btn-primary w-fit px-6 py-4 text-sm mx-auto" type="submit"><i data-lucide="send"></i>Send Message</button>
+          <div class="mt-4 flex justify-center">
+            <button class="btn-primary w-full sm:w-64 px-6 py-4 text-sm" type="submit"><i data-lucide="send"></i>Send Message</button>
+          </div>
           <p class="hidden text-sm font-bold text-[color:var(--brand-sage)] text-center" data-form-status>Thanks. Your message is ready for the studio team.</p>
         </form>
       </div>
@@ -1277,7 +1281,7 @@
 
     const isRtl = document.documentElement.getAttribute("dir") === "rtl";
     document.querySelectorAll("[data-rtl-toggle]").forEach((button) => {
-      button.innerHTML = `<i data-lucide="align-right"></i>`;
+      button.innerHTML = `<span class="text-[10px] font-bold">RTL</span>`;
     });
   }
 
