@@ -784,7 +784,7 @@
           <div class="grid gap-8 lg:grid-cols-[1.1fr_0.7fr_0.7fr_0.7fr]">
             <div class="flex flex-col items-center text-center">
               <div class="flex items-center justify-center gap-3">
-                <span class="brand-mark"><i data-lucide="layers-3"></i></span>
+                <span class="brand-mark"><i data-lucide="scissors"></i></span>
                 <span class="font-display text-3xl font-bold">Paperie &amp; Petal</span>
               </div>
               <p class="section-copy mt-5 max-w-md">A boutique scrapbook supply and paper crafting studio for elegant collections, refined tools, workshops, and handmade inspiration.</p>
