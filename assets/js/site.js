@@ -719,9 +719,9 @@
         <div class="mt-8 grid gap-3">
           <a class="btn-primary px-5 text-sm" href="collections.html" data-close-menu><i data-lucide="shopping-bag"></i>Shop Collections</a>
           <a class="btn-secondary px-5 text-sm" href="workshops.html" data-close-menu><i data-lucide="calendar-days"></i>Book a Workshop</a>
-          <div class="grid grid-cols-2 gap-3">
-            <button class="btn-ghost px-4 text-sm" type="button" data-theme-toggle></button>
-            <button class="btn-ghost px-4 text-sm" type="button" data-rtl-toggle></button>
+          <div class="flex justify-center gap-4">
+            <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark mode"></button>
+            <button class="icon-btn" type="button" data-rtl-toggle aria-label="Toggle right to left layout"></button>
           </div>
         </div>
       </aside>
