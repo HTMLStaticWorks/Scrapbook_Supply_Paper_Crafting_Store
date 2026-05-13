@@ -30,12 +30,12 @@
   const navItems = [
     ["Home", "index.html", "home"],
     ["Home 2", "home2.html", "home2"],
+    ["About", "about.html", "about"],
     ["Collections", "collections.html", "collections"],
     ["Craft Tools", "craft-tools.html", "tools"],
     ["Inspiration Gallery", "inspiration-gallery.html", "gallery"],
     ["Workshops", "workshops.html", "workshops"],
     ["Pricing", "pricing.html", "pricing"],
-    ["About", "about.html", "about"],
     ["Contact", "contact.html", "contact"]
   ];
 
