@@ -44,7 +44,7 @@
       hero: {
         eyebrow: "Scrapbook supply boutique",
         title: "Craft Beautiful Stories by Hand",
-        copy: "Premium papers, tools, tapes, and workshop moments for memory keepers who love elegant layers, tactile detail, and slow creative rituals.",
+        copy: "Craft beautiful stories with premium papers and tools. Join our curated workshops to master the art of layered memory keeping.",
         image: image.journal,
         ctas: [["Shop Collections", "collections.html"], ["Book a Workshop", "workshops.html"]]
       },
@@ -178,7 +178,7 @@
     collections: {
       hero: {
         eyebrow: "Collections and catalogs",
-        title: "Creative Scrapbooking Supplies for Every Artist",
+        title: "Creative Scrapbook Supplies for Every Artist",
         copy: "Browse paper packs, washi libraries, sticker sheets, embellishments, and complete kits in cohesive boutique palettes.",
         image: image.floralBook,
         ctas: [["Browse Paper Packs", "#seasonal-paper-collections"], ["Build a Kit", "pricing.html"]]
@@ -251,7 +251,7 @@
     tools: {
       hero: {
         eyebrow: "Craft tools and accessories",
-        title: "Tools for Clean Cuts, Soft Folds & Beautiful Layers",
+        title: "Precision Tools for Clean Cuts & Soft Folds",
         copy: "Discover die-cut machines, trimmers, scoring boards, storage pieces, and beginner essentials for refined paper crafting.",
         image: image.hands,
         ctas: [["Shop Craft Tools", "#die-cut-machines"], ["See Demos", "#tool-demonstration-gallery"]]
@@ -319,7 +319,7 @@
     gallery: {
       hero: {
         eyebrow: "Inspiration gallery",
-        title: "Scrapbook Layouts, Journals & DIY Ideas to Save",
+        title: "Scrapbook Layouts, Journals & DIY Ideas",
         copy: "A warm visual library of layered pages, seasonal paper projects, handmade journals, and community-made details.",
         image: image.collage,
         ctas: [["Open Gallery", "#scrapbook-layout-ideas"], ["Join a Workshop", "workshops.html"]]
@@ -443,7 +443,7 @@
     pricing: {
       hero: {
         eyebrow: "Pricing and plans",
-        title: "Simple Pricing for Kits, Tools, Workshops & Membership",
+        title: "Simple Pricing for Kits & Workshops",
         copy: "Compare workshop tickets, scrapbook kits, tool bundles, and membership plans designed for casual makers and devoted memory keepers.",
         image: image.pastel,
         ctas: [["Compare Plans", "#pricing-cards"], ["Ask a Question", "contact.html"]]
@@ -518,7 +518,7 @@
     about: {
       hero: {
         eyebrow: "Our studio story",
-        title: "A Boutique Paper Studio for Handmade Memory Keepers",
+        title: "A Boutique Studio for Modern Makers",
         copy: "Paperie & Petal began as a small crop table and grew into a warm destination for curated papers, refined tools, and creative connection.",
         image: image.openBook,
         ctas: [["Meet the Studio", "#brand-story"], ["Visit Us", "contact.html"]]
@@ -733,13 +733,13 @@
       <footer class="section border-t border-[color:var(--line)] pb-10">
         <div class="site-shell">
           <div class="grid gap-8 lg:grid-cols-[1.1fr_0.7fr_0.7fr_0.7fr]">
-            <div>
-              <div class="flex items-center gap-3">
+            <div class="flex flex-col items-center text-center">
+              <div class="flex items-center justify-center gap-3">
                 <span class="brand-mark"><i data-lucide="layers-3"></i></span>
-                <span class="font-display text-3xl font-bold">Paperie & Petal</span>
+                <span class="font-display text-3xl font-bold">Paperie &amp; Petal</span>
               </div>
               <p class="section-copy mt-5 max-w-md">A boutique scrapbook supply and paper crafting studio for elegant collections, refined tools, workshops, and handmade inspiration.</p>
-              <div class="mt-6 flex gap-2">
+              <div class="mt-6 flex justify-center gap-2">
                 <a class="icon-btn" href="inspiration-gallery.html" aria-label="Inspiration"><i data-lucide="image"></i></a>
                 <a class="icon-btn" href="workshops.html" aria-label="Workshops"><i data-lucide="calendar-heart"></i></a>
                 <a class="icon-btn" href="contact.html" aria-label="Contact"><i data-lucide="send"></i></a>
@@ -749,8 +749,8 @@
             ${footerColumn("Create", [["Inspiration", "inspiration-gallery.html"], ["Workshops", "workshops.html"], ["Home 2", "home2.html"]])}
             ${footerColumn("Studio", [["About", "about.html"], ["Contact", "contact.html"], ["Home", "index.html"]])}
           </div>
-          <div class="mt-10 flex flex-col gap-3 border-t border-[color:var(--line)] pt-6 text-sm text-[color:var(--muted)] md:flex-row md:items-center md:justify-between">
-            <p>Copyright 2026 Paperie & Petal. Handmade-inspired boutique website.</p>
+          <div class="mt-10 flex flex-col gap-3 border-t border-[color:var(--line)] pt-6 text-sm text-[color:var(--muted)] items-center text-center">
+            <p>Copyright 2026 Paperie &amp; Petal. Handmade-inspired boutique website.</p>
             <p>Made for paper lovers, crop nights, and creative rituals.</p>
           </div>
         </div>
@@ -760,10 +760,10 @@
 
   function footerColumn(title, links) {
     return `
-      <div>
+      <div class="flex flex-col items-center text-center">
         <h3 class="font-display text-2xl font-bold">${title}</h3>
         <div class="mt-4 grid gap-3">
-          ${links.map(([label, href]) => `<a class="nav-link w-fit" href="${href}">${label}</a>`).join("")}
+          ${links.map(([label, href]) => `<a class="nav-link w-fit mx-auto" href="${href}">${label}</a>`).join("")}
         </div>
       </div>
     `;
@@ -777,11 +777,11 @@
         <span class="floating-paper two"></span>
         <span class="floating-paper three"></span>
         <div class="site-shell py-24">
-          <div class="reveal max-w-4xl">
+          <div class="reveal max-w-4xl mx-auto flex flex-col items-center text-center">
             <span class="eyebrow">${hero.eyebrow}</span>
             <h1 class="hero-title mt-6">${highlightLastWord(hero.title)}</h1>
             <p class="hero-copy mt-7">${hero.copy}</p>
-            <div class="hero-actions mt-9 flex flex-col gap-3 sm:flex-row">
+            <div class="hero-actions mt-9 flex flex-wrap justify-center gap-3">
               <a class="btn-primary px-6 py-4 text-sm" href="${hero.ctas[0][1]}"><i data-lucide="sparkles"></i>${hero.ctas[0][0]}</a>
               <a class="btn-secondary px-6 py-4 text-sm" href="${hero.ctas[1][1]}"><i data-lucide="calendar-check"></i>${hero.ctas[1][0]}</a>
             </div>
@@ -816,7 +816,7 @@
 
   function renderHeading(section) {
     return `
-      <div class="reveal">
+      <div class="reveal flex flex-col items-center text-center">
         <span class="eyebrow">${section.eyebrow}</span>
         <h2 class="section-title mt-5">${section.title}</h2>
         <p class="section-copy mt-5 max-w-3xl">${section.copy}</p>
@@ -826,11 +826,11 @@
 
   function renderFeatureSection(section, index) {
     const content = `
-      <div>
+      <div class="w-full">
         ${renderHeading(section)}
         <div class="mt-8 grid gap-4">
           ${(section.items || []).map((entry) => `
-            <article class="paper-card reveal p-5">
+            <article class="paper-card reveal p-5 text-center">
               <div class="washi-strip"></div>
               <h3 class="font-display text-2xl font-bold">${entry.title}</h3>
               <p class="section-copy mt-2">${entry.text}</p>
@@ -844,7 +844,7 @@
 
   function renderCardsSection(section, index) {
     const content = `
-      <div>
+      <div class="w-full">
         ${renderHeading(section)}
         <div class="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           ${section.items.map(renderProductCard).join("")}
@@ -857,9 +857,9 @@
   function renderSliderSection(section, index) {
     const sliderId = `slider-${index}`;
     const content = `
-      <div>
+      <div class="w-full">
         ${renderHeading(section)}
-        <div class="mt-6 flex gap-2">
+        <div class="mt-6 flex justify-center gap-2">
           <button class="icon-btn" type="button" aria-label="Previous products" data-slider-prev="${sliderId}"><i data-lucide="arrow-left"></i></button>
           <button class="icon-btn" type="button" aria-label="Next products" data-slider-next="${sliderId}"><i data-lucide="arrow-right"></i></button>
         </div>
@@ -873,25 +873,25 @@
 
   function renderProductCard(card) {
     return `
-      <article class="product-card reveal overflow-hidden p-3">
-        <div class="image-frame aspect-[4/3]">
+      <article class="product-card reveal overflow-hidden p-3 h-full flex flex-col">
+        <div class="image-frame aspect-[4/3] shrink-0">
           <img src="${card.img}" alt="${card.title}" loading="lazy" data-lightbox />
           <div class="gallery-overlay"><span class="text-sm font-bold">${card.tag}</span></div>
         </div>
-        <div class="p-3">
-          <div class="mb-3 flex flex-wrap gap-2">
+        <div class="p-3 text-center flex flex-col grow">
+          <div class="product-meta mb-3 flex flex-wrap justify-center gap-2">
             <span class="tag-pill">${card.meta}</span>
             <span class="tag-pill">${card.price}</span>
           </div>
-          <h3 class="font-display text-2xl font-bold leading-tight">${card.title}</h3>
-          <p class="section-copy mt-2 text-sm">${card.text}</p>
+          <h3 class="product-title font-display text-2xl font-bold leading-tight">${card.title}</h3>
+          <p class="section-copy mt-2 text-sm grow">${card.text}</p>
         </div>
       </article>
     `;
   }
 
   function splitSection(section, index, content) {
-    const media = `<div class="reveal">${renderImageStack(section.images || imageSets.paper)}</div>`;
+    const media = `<div class="reveal flex justify-center">${renderImageStack(section.images || imageSets.paper)}</div>`;
     const reverse = index % 2 === 1;
     return `
       <section class="section" ${section.id ? `id="${section.id}"` : ""}>
@@ -919,7 +919,9 @@
     return `
       <section class="section" ${section.id ? `id="${section.id}"` : ""}>
         <div class="site-shell">
-          ${renderHeading(section)}
+          <div class="flex flex-col items-center">
+            ${renderHeading(section)}
+          </div>
           <div class="masonry mt-10">
             ${section.images.map((src, index) => `
               <figure class="masonry-item image-frame reveal" style="height:${index % 3 === 0 ? "360" : index % 3 === 1 ? "460" : "300"}px">
@@ -944,12 +946,12 @@
           ${section.items.map((event) => `
             <article class="event-card reveal p-5">
               <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
+                <div class="text-center">
                   <span class="tag-pill">${event.date} - ${event.time}</span>
                   <h3 class="mt-4 font-display text-2xl font-bold">${event.title}</h3>
                   <p class="section-copy mt-2">${event.text}</p>
                 </div>
-                <a class="btn-secondary shrink-0 px-5 text-sm" href="contact.html"><i data-lucide="ticket"></i>Register</a>
+                <a class="btn-secondary shrink-0 px-5 text-sm mx-auto sm:mx-0" href="contact.html"><i data-lucide="ticket"></i>Register</a>
               </div>
             </article>
           `).join("")}
@@ -965,8 +967,8 @@
         ${renderHeading(section)}
         <div class="mt-8 grid gap-4">
           ${section.items.map((entry) => `
-            <blockquote class="testimonial-card reveal p-6">
-              <i class="text-[color:var(--brand-rose)]" data-lucide="quote"></i>
+            <blockquote class="testimonial-card reveal p-6 text-center">
+              <i class="text-[color:var(--brand-rose)] mx-auto block w-fit" data-lucide="quote"></i>
               <p class="mt-4 font-display text-2xl leading-snug">${entry.text}</p>
               <footer class="mt-4 text-sm font-bold text-[color:var(--muted)]">${entry.author}</footer>
             </blockquote>
@@ -983,15 +985,19 @@
         ${renderHeading(section)}
         <div class="mt-8 grid gap-5 md:grid-cols-3">
           ${section.plans.map((planItem) => `
-            <article class="price-card reveal p-6 ${planItem.popular ? "border-[color:var(--brand-rose)]" : ""}">
-              ${planItem.popular ? `<span class="tag-pill mb-4">Most Popular</span>` : ""}
-              <h3 class="font-display text-3xl font-bold">${planItem.title}</h3>
-              <p class="mt-3 text-4xl font-black text-[color:var(--brand-rose)]">${planItem.price}</p>
-              <p class="section-copy mt-3 text-sm">${planItem.text}</p>
-              <ul class="mt-5 grid gap-3 text-sm text-[color:var(--muted)]">
+            <article class="price-card reveal p-6 text-center h-full flex flex-col ${planItem.popular ? "border-[color:var(--brand-rose)]" : ""}">
+              <div class="pricing-badge mb-4">
+                ${planItem.popular ? `<span class="tag-pill mx-auto">Most Popular</span>` : ""}
+              </div>
+              <h3 class="pricing-title font-display text-3xl font-bold leading-tight">${planItem.title}</h3>
+              <p class="pricing-price mt-3 text-4xl font-black text-[color:var(--brand-rose)]">${planItem.price}</p>
+              <p class="pricing-text section-copy mt-3 text-sm">${planItem.text}</p>
+              <ul class="mt-8 grid gap-3 text-sm text-[color:var(--muted)] text-left grow mx-auto w-fit">
                 ${planItem.features.map((feature) => `<li class="flex gap-2"><i class="mt-0.5 size-4 shrink-0 text-[color:var(--brand-sage)]" data-lucide="check"></i><span>${feature}</span></li>`).join("")}
               </ul>
-              <a class="btn-primary mt-6 w-full px-5 text-sm" href="contact.html">Choose Plan</a>
+              <div class="mt-8">
+                <a class="btn-primary w-full px-5 text-sm" href="contact.html">Choose Plan</a>
+              </div>
             </article>
           `).join("")}
         </div>
@@ -1021,18 +1027,18 @@
 
   function renderFaqSection(section, index) {
     const content = `
-      <div>
+      <div class="w-full">
         ${renderHeading(section)}
         <div class="mt-8 grid gap-4">
           ${section.faqs.map((entry, itemIndex) => `
             <article class="faq-item paper-card reveal p-5 ${itemIndex === 0 ? "is-open" : ""}">
-              <button class="flex w-full items-center justify-between gap-4 text-left" type="button" data-faq-toggle>
+              <button class="flex w-full items-center justify-center gap-4 text-center" type="button" data-faq-toggle>
                 <span class="font-display text-xl font-bold">${entry.question}</span>
                 <i data-lucide="chevron-down"></i>
               </button>
               <div class="faq-panel">
                 <div>
-                  <p class="section-copy pt-4">${entry.answer}</p>
+                  <p class="section-copy pt-4 text-center">${entry.answer}</p>
                 </div>
               </div>
             </article>
@@ -1082,13 +1088,13 @@
         ${renderHeading(section)}
         <form class="paper-card reveal mt-8 grid gap-4 p-5" data-contact-form>
           <div class="grid gap-4 sm:grid-cols-2">
-            <label class="grid gap-2 text-sm font-bold">Name<input class="contact-input" name="name" placeholder="Your name" required /></label>
-            <label class="grid gap-2 text-sm font-bold">Email<input class="contact-input" type="email" name="email" placeholder="you@example.com" required /></label>
+            <label class="grid gap-2 text-sm font-bold text-center">Name<input class="contact-input" name="name" placeholder="Your name" required /></label>
+            <label class="grid gap-2 text-sm font-bold text-center">Email<input class="contact-input" type="email" name="email" placeholder="you@example.com" required /></label>
           </div>
-          <label class="grid gap-2 text-sm font-bold">Topic<select class="contact-input" name="topic"><option>Workshop registration</option><option>Custom kit request</option><option>Product question</option><option>Private event</option></select></label>
-          <label class="grid gap-2 text-sm font-bold">Message<textarea class="contact-input min-h-36" name="message" placeholder="Tell us about the project, workshop, or supplies you are interested in." required></textarea></label>
-          <button class="btn-primary w-fit px-6 py-4 text-sm" type="submit"><i data-lucide="send"></i>Send Message</button>
-          <p class="hidden text-sm font-bold text-[color:var(--brand-sage)]" data-form-status>Thanks. Your message is ready for the studio team.</p>
+          <label class="grid gap-2 text-sm font-bold text-center">Topic<select class="contact-input" name="topic"><option>Workshop registration</option><option>Custom kit request</option><option>Product question</option><option>Private event</option></select></label>
+          <label class="grid gap-2 text-sm font-bold text-center">Message<textarea class="contact-input min-h-36" name="message" placeholder="Tell us about the project, workshop, or supplies you are interested in." required></textarea></label>
+          <button class="btn-primary w-fit px-6 py-4 text-sm mx-auto" type="submit"><i data-lucide="send"></i>Send Message</button>
+          <p class="hidden text-sm font-bold text-[color:var(--brand-sage)] text-center" data-form-status>Thanks. Your message is ready for the studio team.</p>
         </form>
       </div>
     `;
