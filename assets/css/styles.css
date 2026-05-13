@@ -165,14 +165,7 @@ select {
   color: var(--brand-rose);
 }
 
-.brand-subtitle {
-  display: block;
-  color: var(--muted);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
+
 
 .btn-primary,
 .btn-secondary,

@@ -648,6 +648,44 @@
           images: [image.journal, image.washi, image.floralBook, image.workshop, image.goldTools, image.handmade]
         },
       ]
+    },
+    login: {
+      hero: {
+        eyebrow: "Welcome back",
+        title: "Access Your Creative Studio",
+        copy: "Log in to manage your workshop registrations, view your saved inspiration boards, and access exclusive member collections.",
+        image: image.journal,
+        ctas: [["Don't have an account?", "signup.html"], ["Forgot password?", "#"]]
+      },
+      sections: [
+        {
+          kind: "auth",
+          type: "login",
+          eyebrow: "Secure Login",
+          title: "Sign in to your account",
+          copy: "Use your email and password to access your Paperie & Petal profile.",
+          images: imageSets.paper
+        }
+      ]
+    },
+    signup: {
+      hero: {
+        eyebrow: "Join our community",
+        title: "Start Your Paper Crafting Journey",
+        copy: "Create an account to book workshops, earn studio rewards, and join a community of passionate paper artists.",
+        image: image.hands,
+        ctas: [["Already have an account?", "login.html"], ["Membership details", "pricing.html"]]
+      },
+      sections: [
+        {
+          kind: "auth",
+          type: "signup",
+          eyebrow: "New Account",
+          title: "Register for the studio",
+          copy: "Fill in your details below to create your Paperie & Petal account.",
+          images: imageSets.tools
+        }
+      ]
     }
   };
 
@@ -678,9 +716,23 @@
   function init() {
     const pageKey = document.body.dataset.page || "home";
     const page = pages[pageKey] || pages.home;
-    document.getElementById("site-header").innerHTML = renderHeader(pageKey);
-    document.getElementById("site-footer").innerHTML = renderFooter();
-    document.getElementById("app").innerHTML = renderHero(page.hero) + page.sections.map((section, index) => renderSection(section, index)).join("");
+    const isAuth = ["login", "signup"].includes(pageKey);
+
+    if (isAuth) {
+      document.getElementById("site-header").innerHTML = `
+        <div class="site-shell flex justify-end gap-2 py-4">
+          <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark mode"></button>
+          <button class="icon-btn" type="button" data-rtl-toggle aria-label="Toggle right to left layout"></button>
+        </div>
+      `;
+    } else {
+      document.getElementById("site-header").innerHTML = renderHeader(pageKey);
+    }
+    document.getElementById("site-footer").innerHTML = isAuth ? "" : renderFooter();
+    
+    const heroHtml = isAuth ? "" : renderHero(page.hero);
+    document.getElementById("app").innerHTML = heroHtml + page.sections.map((section, index) => renderSection(section, index)).join("");
+    
     setupInteractions();
     renderIcons();
   }
@@ -696,13 +748,11 @@
             <span class="brand-mark"><i data-lucide="scissors"></i></span>
             <span class="leading-tight">
               <span class="block font-display text-xl font-bold">Paperie & Petal</span>
-              <span class="brand-subtitle">Scrapbook Studio</span>
             </span>
           </a>
           <nav class="desktop-nav mx-auto hidden items-center gap-3 xl:flex" aria-label="Primary navigation">${desktopLinks}</nav>
           <div class="desktop-actions hidden shrink-0 items-center gap-2 xl:flex">
-            <a class="btn-primary px-4 text-xs" href="collections.html"><i data-lucide="shopping-bag"></i>Shop Collections</a>
-            <a class="btn-secondary px-4 text-xs" href="workshops.html"><i data-lucide="calendar-days"></i>Book a Workshop</a>
+            <a class="btn-primary px-5 text-xs" href="signup.html"><i data-lucide="user-plus"></i>Sign Up</a>
             <button class="icon-btn" type="button" aria-label="Toggle dark mode" data-theme-toggle></button>
             <button class="icon-btn" type="button" aria-label="Toggle right to left layout" data-rtl-toggle></button>
           </div>
@@ -717,8 +767,7 @@
         </div>
         <nav class="mt-8 grid gap-3" aria-label="Mobile primary navigation">${mobileLinks}</nav>
         <div class="mt-8 grid gap-3">
-          <a class="btn-primary px-5 text-sm" href="collections.html" data-close-menu><i data-lucide="shopping-bag"></i>Shop Collections</a>
-          <a class="btn-secondary px-5 text-sm" href="workshops.html" data-close-menu><i data-lucide="calendar-days"></i>Book a Workshop</a>
+          <a class="btn-primary px-5 text-sm" href="signup.html" data-close-menu><i data-lucide="user-plus"></i>Sign Up</a>
           <div class="flex justify-center gap-4">
             <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark mode"></button>
             <button class="icon-btn" type="button" data-rtl-toggle aria-label="Toggle right to left layout"></button>
@@ -778,9 +827,9 @@
             <span class="eyebrow">${hero.eyebrow}</span>
             <h1 class="hero-title mt-6">${highlightLastWord(hero.title)}</h1>
             <p class="hero-copy mt-7">${hero.copy}</p>
-            <div class="hero-actions mt-9 flex flex-wrap justify-center gap-4">
-              <a class="btn-primary px-8 py-5 text-base" href="${hero.ctas[0][1]}"><i data-lucide="sparkles"></i>${hero.ctas[0][0]}</a>
-              <a class="btn-secondary px-8 py-5 text-base" href="${hero.ctas[1][1]}"><i data-lucide="calendar-check"></i>${hero.ctas[1][0]}</a>
+            <div class="hero-actions mt-9 flex flex-col sm:flex-row flex-wrap justify-center items-stretch gap-4">
+              <a class="btn-primary px-8 py-5 text-base w-full sm:w-64" href="${hero.ctas[0][1]}"><i data-lucide="sparkles"></i>${hero.ctas[0][0]}</a>
+              <a class="btn-secondary px-8 py-5 text-base w-full sm:w-64" href="${hero.ctas[1][1]}"><i data-lucide="calendar-check"></i>${hero.ctas[1][0]}</a>
             </div>
           </div>
         </div>
@@ -806,7 +855,8 @@
       faq: renderFaqSection,
       calendar: renderCalendarSection,
       contact: renderContactSection,
-      feature: renderFeatureSection
+      feature: renderFeatureSection,
+      auth: renderAuthSection
     };
     return (renderers[section.kind] || renderFeatureSection)(section, index);
   }
@@ -994,8 +1044,8 @@
               <ul class="mt-8 grid gap-3 text-sm text-[color:var(--muted)] text-center grow mx-auto w-fit">
                 ${planItem.features.map((feature) => `<li class="flex items-center justify-center gap-2"><i class="size-4 shrink-0 text-[color:var(--brand-sage)]" data-lucide="check"></i><span>${feature}</span></li>`).join("")}
               </ul>
-              <div class="mt-8">
-                <a class="btn-primary w-full px-5 text-sm" href="contact.html">Choose Plan</a>
+              <div class="mt-8 flex justify-center">
+                <a class="btn-primary w-full sm:w-64 px-5 text-sm" href="contact.html">Choose Plan</a>
               </div>
             </article>
           `).join("")}
@@ -1100,6 +1150,87 @@
     return splitSection(section, index, content);
   }
 
+  function renderAuthSection(section, index) {
+    const isLogin = section.type === "login";
+    const content = `
+      <div class="max-w-md mx-auto w-full">
+        <form class="paper-card reveal grid gap-5 p-8" data-auth-form>
+          <a href="index.html" class="flex flex-col items-center gap-2 mb-8 text-center transition-opacity hover:opacity-80" aria-label="Back to home">
+            <span class="brand-mark mb-1"><i data-lucide="scissors"></i></span>
+            <span class="font-display text-2xl font-bold">Paperie & Petal</span>
+          </a>
+          <div class="text-center mb-6">
+            <span class="eyebrow mx-auto">${section.eyebrow}</span>
+            <h2 class="font-display text-3xl font-bold mt-4 leading-tight">${section.title}</h2>
+            <p class="section-copy mt-3 text-sm">${section.copy}</p>
+          </div>
+          ${!isLogin ? `
+            <div class="grid gap-2 text-sm font-bold text-left">
+              Full Name
+              <input class="contact-input" name="name" placeholder="Enter your full name" required />
+            </div>
+          ` : ""}
+          <div class="grid gap-2 text-sm font-bold text-left">
+            Email Address
+            <input class="contact-input" type="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="grid gap-2 text-sm font-bold text-left">
+            Password
+            <input class="contact-input" type="password" name="password" placeholder="••••••••" required />
+          </div>
+          ${!isLogin ? `
+            <div class="grid gap-2 text-sm font-bold text-left">
+              Confirm Password
+              <input class="contact-input" type="password" name="confirm-password" placeholder="••••••••" required />
+            </div>
+          ` : ""}
+          <button class="btn-primary w-full px-6 py-4 text-sm mt-2" type="submit">
+            <i data-lucide="${isLogin ? "log-in" : "user-plus"}"></i>
+            ${isLogin ? "Sign In" : "Create Account"}
+          </button>
+
+          <div class="relative flex items-center justify-center my-2">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-[color:var(--line)]"></div></div>
+            <span class="relative bg-[color:var(--paper)] px-3 text-[10px] font-bold text-[color:var(--muted)] uppercase tracking-widest">Or continue with</span>
+          </div>
+
+          <div class="grid gap-3 sm:grid-cols-2">
+            <button class="btn-ghost w-full px-4 text-sm" type="button">
+              <svg class="size-4 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              Google
+            </button>
+            <button class="btn-ghost w-full px-4 text-sm" type="button"><i data-lucide="apple"></i>Apple</button>
+          </div>
+          <div class="mt-4 text-center text-sm text-[color:var(--muted)]">
+            ${isLogin ? `
+              New to Paperie & Petal? <a href="signup.html" class="font-bold text-[color:var(--brand-rose)] hover:underline">Create an account</a>
+            ` : `
+              Already a member? <a href="login.html" class="font-bold text-[color:var(--brand-rose)] hover:underline">Log in here</a>
+            `}
+          </div>
+          <p class="hidden text-sm font-bold text-[color:var(--brand-sage)] text-center mt-4" data-form-status>
+            ${isLogin ? "Login successful! Redirecting to your dashboard..." : "Account created! Welcome to the studio."}
+          </p>
+          <div class="mt-8 border-t border-[color:var(--line)] pt-6 text-center">
+            <a href="index.html" class="nav-link text-xs"><i data-lucide="arrow-left"></i>Back to Home</a>
+          </div>
+        </form>
+      </div>
+    `;
+    return `
+      <section class="section min-h-screen flex items-center justify-center">
+        <div class="site-shell w-full">
+          ${content}
+        </div>
+      </section>
+    `;
+  }
+
   function setupInteractions() {
     updateToggleButtons();
     setupThemeToggle();
@@ -1146,10 +1277,7 @@
 
     const isRtl = document.documentElement.getAttribute("dir") === "rtl";
     document.querySelectorAll("[data-rtl-toggle]").forEach((button) => {
-      const compact = button.classList.contains("icon-btn");
-      button.innerHTML = compact
-        ? `<i data-lucide="languages"></i>`
-        : `<i data-lucide="languages"></i>${isRtl ? "LTR Layout" : "RTL Layout"}`;
+      button.innerHTML = `<i data-lucide="align-right"></i>`;
     });
   }
 
@@ -1231,10 +1359,11 @@
   }
 
   function setupForms() {
-    document.querySelectorAll("[data-contact-form]").forEach((form) => {
+    document.querySelectorAll("[data-contact-form], [data-auth-form]").forEach((form) => {
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        form.querySelector("[data-form-status]").classList.remove("hidden");
+        const status = form.querySelector("[data-form-status]");
+        if (status) status.classList.remove("hidden");
         form.reset();
       });
     });
