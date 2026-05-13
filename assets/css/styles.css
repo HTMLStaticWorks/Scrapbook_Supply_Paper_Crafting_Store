@@ -273,7 +273,7 @@ select {
   font-family: "Playfair Display", serif;
   font-size: clamp(3rem, 8vw, 6.4rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.15;
   letter-spacing: -0.015em;
   text-wrap: balance;
   overflow-wrap: anywhere;
@@ -335,7 +335,7 @@ select {
   font-family: "Playfair Display", serif;
   font-size: clamp(2.1rem, 5vw, 4.6rem);
   font-weight: 800;
-  line-height: 1.02;
+  line-height: 1.15;
   letter-spacing: 0;
   text-wrap: balance;
   overflow-wrap: anywhere;
@@ -754,7 +754,7 @@ select {
 
 .washi-strip {
   position: absolute;
-  top: 18px;
+  top: 6px;
   right: 22px;
   width: 132px;
   height: 32px;
@@ -944,8 +944,7 @@ select {
   }
 
   /* ── split-section: center both columns when stacked ── */
-  .site-shell.grid > div,
-  .site-shell > .grid > div {
+  .site-shell > div {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -960,22 +959,19 @@ select {
   }
 
   /* ── Slider section: keep slider full-width when parent is a flex column ── */
-  .site-shell.grid > div .slider-row,
-  .site-shell > .grid > div .slider-row {
+  .site-shell .slider-row {
     width: 100%;
     align-self: stretch;
   }
 
   /* ── Slider nav buttons: keep them left-aligned on mobile ── */
-  .site-shell.grid > div .flex.gap-2,
-  .site-shell > .grid > div .flex.gap-2 {
-    align-self: flex-start;
+  .site-shell .flex.gap-2 {
+    align-self: center;
     width: auto;
   }
 
   /* ── Slider's w-full wrapper: ensure full width ── */
-  .site-shell.grid > div > .w-full,
-  .site-shell > .grid > div > .w-full {
+  .site-shell .w-full {
     width: 100%;
     align-items: stretch;
   }

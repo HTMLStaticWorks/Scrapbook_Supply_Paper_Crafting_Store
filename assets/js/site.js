@@ -704,7 +704,7 @@
             <a class="btn-primary px-4 text-xs" href="collections.html"><i data-lucide="shopping-bag"></i>Shop Collections</a>
             <a class="btn-secondary px-4 text-xs" href="workshops.html"><i data-lucide="calendar-days"></i>Book a Workshop</a>
             <button class="icon-btn" type="button" aria-label="Toggle dark mode" data-theme-toggle></button>
-            <button class="icon-btn text-xs font-black" type="button" aria-label="Toggle right to left layout" data-rtl-toggle>RTL</button>
+            <button class="icon-btn" type="button" aria-label="Toggle right to left layout" data-rtl-toggle></button>
           </div>
           <button class="icon-btn mobile-menu-button ms-auto" type="button" aria-label="Open menu" data-open-menu><i data-lucide="menu"></i></button>
         </div>
@@ -721,7 +721,7 @@
           <a class="btn-secondary px-5 text-sm" href="workshops.html" data-close-menu><i data-lucide="calendar-days"></i>Book a Workshop</a>
           <div class="grid grid-cols-2 gap-3">
             <button class="btn-ghost px-4 text-sm" type="button" data-theme-toggle></button>
-            <button class="btn-ghost px-4 text-sm" type="button" data-rtl-toggle>RTL Layout</button>
+            <button class="btn-ghost px-4 text-sm" type="button" data-rtl-toggle></button>
           </div>
         </div>
       </aside>
@@ -773,17 +773,14 @@
     return `
       <section class="hero-section">
         <div class="hero-bg" style="background-image:url('${hero.image}')"></div>
-        <span class="floating-paper one"></span>
-        <span class="floating-paper two"></span>
-        <span class="floating-paper three"></span>
         <div class="site-shell py-24">
           <div class="reveal max-w-4xl mx-auto flex flex-col items-center text-center">
             <span class="eyebrow">${hero.eyebrow}</span>
             <h1 class="hero-title mt-6">${highlightLastWord(hero.title)}</h1>
             <p class="hero-copy mt-7">${hero.copy}</p>
-            <div class="hero-actions mt-9 flex flex-wrap justify-center gap-3">
-              <a class="btn-primary px-6 py-4 text-sm" href="${hero.ctas[0][1]}"><i data-lucide="sparkles"></i>${hero.ctas[0][0]}</a>
-              <a class="btn-secondary px-6 py-4 text-sm" href="${hero.ctas[1][1]}"><i data-lucide="calendar-check"></i>${hero.ctas[1][0]}</a>
+            <div class="hero-actions mt-9 flex flex-wrap justify-center gap-4">
+              <a class="btn-primary px-8 py-5 text-base" href="${hero.ctas[0][1]}"><i data-lucide="sparkles"></i>${hero.ctas[0][0]}</a>
+              <a class="btn-secondary px-8 py-5 text-base" href="${hero.ctas[1][1]}"><i data-lucide="calendar-check"></i>${hero.ctas[1][0]}</a>
             </div>
           </div>
         </div>
@@ -830,7 +827,7 @@
         ${renderHeading(section)}
         <div class="mt-8 grid gap-4">
           ${(section.items || []).map((entry) => `
-            <article class="paper-card reveal p-5 text-center">
+            <article class="paper-card reveal pt-10 p-5 text-center">
               <div class="washi-strip"></div>
               <h3 class="font-display text-2xl font-bold">${entry.title}</h3>
               <p class="section-copy mt-2">${entry.text}</p>
@@ -891,12 +888,14 @@
   }
 
   function splitSection(section, index, content) {
-    const media = `<div class="reveal flex justify-center">${renderImageStack(section.images || imageSets.paper)}</div>`;
-    const reverse = index % 2 === 1;
+    const media = `<div class="reveal mt-16 flex justify-center w-full">${renderImageStack(section.images || imageSets.paper)}</div>`;
     return `
       <section class="section" ${section.id ? `id="${section.id}"` : ""}>
-        <div class="site-shell grid items-center gap-12 lg:grid-cols-2">
-          ${reverse ? media + content : content + media}
+        <div class="site-shell flex flex-col items-center">
+          <div class="w-full flex flex-col items-center">
+            ${content}
+          </div>
+          ${media}
         </div>
       </section>
     `;
@@ -945,13 +944,13 @@
         <div class="mt-8 grid gap-4">
           ${section.items.map((event) => `
             <article class="event-card reveal p-5">
-              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div class="text-center">
+              <div class="flex flex-col items-center text-center gap-6">
+                <div>
                   <span class="tag-pill">${event.date} - ${event.time}</span>
                   <h3 class="mt-4 font-display text-2xl font-bold">${event.title}</h3>
                   <p class="section-copy mt-2">${event.text}</p>
                 </div>
-                <a class="btn-secondary shrink-0 px-5 text-sm mx-auto sm:mx-0" href="contact.html"><i data-lucide="ticket"></i>Register</a>
+                <a class="btn-secondary shrink-0 px-8 text-sm" href="contact.html"><i data-lucide="ticket"></i>Register</a>
               </div>
             </article>
           `).join("")}
@@ -992,8 +991,8 @@
               <h3 class="pricing-title font-display text-3xl font-bold leading-tight">${planItem.title}</h3>
               <p class="pricing-price mt-3 text-4xl font-black text-[color:var(--brand-rose)]">${planItem.price}</p>
               <p class="pricing-text section-copy mt-3 text-sm">${planItem.text}</p>
-              <ul class="mt-8 grid gap-3 text-sm text-[color:var(--muted)] text-left grow mx-auto w-fit">
-                ${planItem.features.map((feature) => `<li class="flex gap-2"><i class="mt-0.5 size-4 shrink-0 text-[color:var(--brand-sage)]" data-lucide="check"></i><span>${feature}</span></li>`).join("")}
+              <ul class="mt-8 grid gap-3 text-sm text-[color:var(--muted)] text-center grow mx-auto w-fit">
+                ${planItem.features.map((feature) => `<li class="flex items-center justify-center gap-2"><i class="size-4 shrink-0 text-[color:var(--brand-sage)]" data-lucide="check"></i><span>${feature}</span></li>`).join("")}
               </ul>
               <div class="mt-8">
                 <a class="btn-primary w-full px-5 text-sm" href="contact.html">Choose Plan</a>
@@ -1131,6 +1130,7 @@
         document.documentElement.setAttribute("dir", isRtl ? "ltr" : "rtl");
         localStorage.setItem("paperie-rtl", String(!isRtl));
         updateToggleButtons();
+        renderIcons();
       });
     });
   }
@@ -1147,7 +1147,9 @@
     const isRtl = document.documentElement.getAttribute("dir") === "rtl";
     document.querySelectorAll("[data-rtl-toggle]").forEach((button) => {
       const compact = button.classList.contains("icon-btn");
-      button.textContent = compact ? (isRtl ? "LTR" : "RTL") : (isRtl ? "LTR Layout" : "RTL Layout");
+      button.innerHTML = compact
+        ? `<i data-lucide="languages"></i>`
+        : `<i data-lucide="languages"></i>${isRtl ? "LTR Layout" : "RTL Layout"}`;
     });
   }
 
